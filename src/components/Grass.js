@@ -1,0 +1,17 @@
+import * as THREE from "three";
+import { tilesPerRow,tileSize } from "../constants";
+
+export function Grass(rowIndex){
+    const grass=new THREE.Group();
+    const foundation=new THREE.Mesh(
+      new THREE.BoxGeometry(tileSize*tilesPerRow,tileSize,3),
+      new THREE.MeshLambertMaterial({
+      color:0xbaf455
+      })
+    );
+    foundation.position.z=1.5;
+    grass.position.y=rowIndex*tileSize;
+    foundation.castShadow=true;
+    grass.add(foundation);
+    return grass;
+}
